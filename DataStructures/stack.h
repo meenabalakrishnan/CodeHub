@@ -25,6 +25,7 @@ public:
     
     void push(T value);
     T* pop();
+    T* top();
     int count() {
         return elems->count();
     }
