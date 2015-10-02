@@ -7,3 +7,12 @@
 //
 
 #include "stack.h"
+
+template <typename T> void Stack<T>::push(T value) {
+    ListNode<T> *newNode = new ListNode<T>;
+    elems->AddLast(newNode);
+}
+
+template <typename T> T Stack<T>::pop() {
+    return elems->RemoveLast();
+}

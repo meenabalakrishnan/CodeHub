@@ -10,5 +10,23 @@
 #define __DataStructures__stack__
 
 #include <stdio.h>
+#include "list.h"
+
+template <typename T>
+class Stack {
+public:
+    Stack() {
+        elems = new List<T>();
+    }
+    
+    void push(T value);
+    T pop();
+    int count() {
+        return elems->count();
+    }
+    
+private:
+    List<T> elems;
+};
 
 #endif /* defined(__DataStructures__stack__) */
