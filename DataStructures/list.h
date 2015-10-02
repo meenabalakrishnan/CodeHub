@@ -22,6 +22,11 @@ public:
         this->next = NULL;
     }
     
+    ~ListNode() {
+        next = NULL;
+        previous = NULL;
+    }
+    
     void setNext(T* nextNode) {
         this->next = nextNode;
     }
@@ -49,18 +54,26 @@ public:
         last = last = NULL;
     }
     
-    T getFront() {
+    ~List() {
+        delete front;
+        delete last;
+        
+        front = NULL;
+        last = NULL;
+    }
+    
+    T* getFront() {
         return front;
     }
     
-    T getLast() {
+    T* getLast() {
         return last;
     }
 
     void AddFront(T value);
     void AddLast(T value);
-    T RemoveFront();
-    T RemoveLast();
+    T* RemoveFront();
+    T* RemoveLast();
     
     int count() {
         return numElems;

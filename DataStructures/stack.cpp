@@ -13,6 +13,6 @@ template <typename T> void Stack<T>::push(T value) {
     elems->AddLast(newNode);
 }
 
-template <typename T> T Stack<T>::pop() {
+template <typename T> T* Stack<T>::pop() {
     return elems->RemoveLast();
 }

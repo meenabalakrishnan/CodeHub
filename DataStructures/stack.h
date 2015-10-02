@@ -19,8 +19,12 @@ public:
         elems = new List<T>();
     }
     
+    ~Stack() {
+        delete elems;
+    }
+    
     void push(T value);
-    T pop();
+    T* pop();
     int count() {
         return elems->count();
     }
