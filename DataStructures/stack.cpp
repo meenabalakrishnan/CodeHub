@@ -9,14 +9,13 @@
 #include "stack.h"
 
 template <typename T> void Stack<T>::push(T value) {
-    ListNode<T> *newNode = new ListNode<T>;
-    elems->AddLast(newNode);
+    this->elems->AddLast(value);
 }
 
-template <typename T> T* Stack<T>::top() {
+template <typename T> ListNode<T>* Stack<T>::top() {
     return elems->getLast();
 }
 
-template <typename T> T* Stack<T>::pop() {
+template <typename T> ListNode<T>* Stack<T>::pop() {
     return elems->RemoveLast();
 }

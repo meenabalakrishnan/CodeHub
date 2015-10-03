@@ -20,19 +20,28 @@ public:
     ListNode(T value) {
         this->value = value;
         this->next = NULL;
+        this->previous = NULL;
     }
     
     ~ListNode() {
         next = NULL;
         previous = NULL;
     }
-    
-    void setNext(T* nextNode) {
+
+    void setNext(ListNode<T>* nextNode) {
         this->next = nextNode;
     }
     
-    T* getNext() {
+    void setPrevious(ListNode<T>* nextNode) {
+        this->previous = nextNode;
+    }
+    
+    ListNode<T>* getNext() {
         return this->next;
+    }
+    
+    ListNode<T>* getPrevious() {
+        return this->previous;
     }
     
     T getValue() {
@@ -41,15 +50,15 @@ public:
     
 private:
     T value;
-    T* next;
-    T* previous;
+    ListNode<T>* next;
+    ListNode<T>* previous;
 };
 
 
 template <typename T>
 class List {
 public:
-    List(T) {
+    List() {
         numElems = 0;
         last = last = NULL;
     }
@@ -62,26 +71,36 @@ public:
         last = NULL;
     }
     
-    T* getFront() {
+    ListNode<T>* getFront() {
         return front;
     }
     
-    T* getLast() {
+    ListNode<T>* getLast() {
         return last;
     }
 
+    void setFront(ListNode<T>* node) {
+        this->front = node;
+    }
+    
+    void setLast(ListNode<T>* node) {
+        this->last = node;
+    }
+    
     void AddFront(T value);
     void AddLast(T value);
-    T* RemoveFront();
-    T* RemoveLast();
+    ListNode<T>* RemoveFront();
+    ListNode<T>* RemoveLast();
     
     int count() {
         return numElems;
     }
 private:
-    T* front;
-    T* last;
+    ListNode<T>* front;
+    ListNode<T>* last;
     int numElems;
 };
+
+#include "list.cpp"
 
 #endif /* defined(__DataStructures__list__) */

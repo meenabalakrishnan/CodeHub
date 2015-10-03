@@ -24,14 +24,16 @@ public:
     }
     
     void push(T value);
-    T* pop();
-    T* top();
+    ListNode<T>* pop();
+    ListNode<T>* top();
     int count() {
         return elems->count();
     }
     
 private:
-    List<T> elems;
+    List<T>* elems;
 };
+
+#include "stack.cpp"
 
 #endif /* defined(__DataStructures__stack__) */

@@ -19,8 +19,10 @@ template <typename T>
 class Utils {
 public:
     static void printVector(std::vector<T> vec);
-    static void printList(List<T> listItems);
-    static void printStack(Stack<T> stackItems);
+    static void printList(List<T>* listItems);
+    static void printStack(Stack<T>* stackItems);
 };
+
+#include "utils.cpp"
 
 #endif /* defined(__DataStructures__utils__) */

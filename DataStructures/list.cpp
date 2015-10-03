@@ -11,40 +11,46 @@
 template<typename T> void List<T>::AddFront(T value) {
     ListNode<T> *newNode = new ListNode<T>(value);
     if(front != NULL)  {
-        newNode->next = front;
-        front->previous = newNode;
+        newNode->setNext(this->front);
+        this->front->setPrevious(newNode);
+    } else {
+        this->last = newNode;
     }
     numElems++;
-    front = newNode;
+    this->front = newNode;
 }
    
 
 template<typename T> void List<T>::AddLast(T value) {
     ListNode<T> *newNode = new ListNode<T>(value);
-    if(last != NULL) {
-        last->next = newNode;
-        newNode->previous = last;
+    if(this->last != NULL) {
+        this->last->setNext(newNode);
+        newNode->setPrevious(this->last);
+    } else {
+        this->front = newNode;
     }
     numElems++;
-    last = newNode;
+    this->last = newNode;
 }
 
-template<typename T> T* List<T>::RemoveFront() {
-    ListNode<T> *frontNode = front;
-    if(front != NULL) {
-        front->next->previous = NULL;
-        front = front->next;
+template<typename T> ListNode<T>* List<T>::RemoveFront() {
+    ListNode<T> *frontNode = this->front;
+    if(this->front != NULL) {
+        ListNode<T> *nextNode = this->front->getNext();
+        nextNode->setPrevious(NULL);
+        this->front = nextNode;
         numElems--;
     }
     
     return frontNode;
 }
 
-template<typename T> T* List<T>::RemoveLast() {
-    ListNode<T> *lastNode = last;
-    if(last != NULL) {
-        last->previous->next = NULL;
-        last = last->previous;
+template<typename T> ListNode<T>* List<T>::RemoveLast() {
+    ListNode<T> *lastNode = this->last;
+    if(this->last != NULL) {
+        ListNode<T> *prevNode = this->last->getPrevious();
+        prevNode->setNext(NULL);
+        this->last = prevNode;
         numElems--;
     }
     return lastNode;

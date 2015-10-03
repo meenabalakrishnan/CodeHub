@@ -15,26 +15,26 @@ template <typename T> void Utils<T>::printVector(std::vector<T> vec) {
     });
 }
 
-template <typename T> void Utils<T>::printList(List<T> items) {
+template <typename T> void Utils<T>::printList(List<T>* items) {
     if (items == NULL) {
         return;
     }
     
-    ListNode<T> head = items->front;
-    while (head) {
-        std::cout<<head->getValue();
+    ListNode<T>* head = items->getFront();
+    while (head != NULL) {
+        std::wcout<<head->getValue()<<"\n";
         head = head->getNext();
     }
 }
 
-template <typename T> void Utils<T>::printStack(Stack<T> items) {
+template <typename T> void Utils<T>::printStack(Stack<T>* items) {
     if (items == NULL) {
         return;
     }
     
-    ListNode<T> head = items->top();
-    while (head) {
-        std::cout<<head->value;
-        head = head->previous();
+    ListNode<T>* head = items->top();
+    while (head != NULL) {
+        std::wcout<<head->getValue()<<"\n";
+        head = head->getPrevious();
     }
 }
